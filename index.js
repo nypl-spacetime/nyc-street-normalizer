@@ -120,6 +120,10 @@ const fixes = [
   [/^N\.? /i, 'North '],
   [/^S\.? /i, 'South '],
 
+  // Sometimes, a single d is used for ordinals:
+  [/2d/, '2nd'],
+  [/3d/, '3rd'],
+
   // Common abbreviations:
   [/Anth'y/i, 'Anthony'],
   [/Att'y/i, 'Attorney'],
@@ -199,7 +203,10 @@ function avenue (str) {
 }
 
 function street (str) {
-  if (R.any(R.contains(R.__, str.toLowerCase()), notStreets.map((str) => str.toLowerCase()))) {
+  const notStreet = notStreets
+    .reduce((any, notStreet) => any || str.match(new RegExp(`\\b${notStreet}\\b`, 'i')), false)
+
+  if (notStreet) {
     return str
   }
 

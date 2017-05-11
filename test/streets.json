@@ -6,12 +6,14 @@
   ["Monroe", "Monroe Street"],
   ["Fourth", "Fourth Avenue"],
   ["Fourth Avenue", "Fourth Avenue"],
+  ["Broad", "Broad Street"],
   ["B'way", "Broadway"],
   ["Broadway", "Broadway"],
   ["Rivington", "Rivington Street"],
   ["W. 18th", "West 18th Street"],
   ["Madison", "Madison Street"],
   ["Hudson", "Hudson Street"],
+  ["bowery", "Bowery"],
   ["merchants ex", "Merchants Exchange"],
   ["merchants ex.", "Merchants Exchange"],
   ["Thirteenth", "Thirteenth Avenue"],
@@ -37,5 +39,7 @@
   ["Fourteenth", "Fourteenth Avenue"],
   ["Fourteenth Street", "14th Street"],
   ["Fifteenth", "15th Street"],
-  ["Fifteenth Street", "15th Street"]
+  ["Fifteenth Street", "15th Street"],
+  ["32d Street", "32nd Street"],
+  ["33d Street", "33rd Street"]
 ]
