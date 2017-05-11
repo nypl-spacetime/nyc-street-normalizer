@@ -1,5 +1,67 @@
 const R = require('ramda')
 
+const fullOrdinals = [
+  [/First/i, '1st'],
+  [/Second/i, '2nd'],
+  [/Third/i, '3rd'],
+  [/Fourth/i, '4th'],
+  [/Fifth/i, '5th'],
+  [/Sixth/i, '6th'],
+  [/Seventh/i, '7th'],
+  [/Eigth/i, '8th'],
+  [/Ninth/i, '9th'],
+  [/Tenth/i, '10th'],
+  [/Eleventh/i, '11th'],
+  [/Twelth/i, '12th'],
+  [/Thirteenth/i, '13th'],
+  [/Fourteenth/i, '14th'],
+  [/Fifteenth/i, '15th'],
+  [/Sixteenth/i, '16th'],
+  [/Seventeenth/i, '17th'],
+  [/Eighteenth/i, '18th'],
+  [/Nineteenth/i, '19th'],
+  [/Twentieth/i, '20th'],
+  [/Twenty-?First/i, '21st'],
+  [/Twenty-?Second/i, '22nd'],
+  [/Twenty-?Third/i, '23rd'],
+  [/Twenty-?Fourth/i, '24th'],
+  [/Twenty-?Fifth/i, '25th'],
+  [/Twenty-?Sixth/i, '26th'],
+  [/Twenty-?Seventh/i, '27th'],
+  [/Twenty-?Eighth/i, '28th'],
+  [/Twenty-?Ninth/i, '29th'],
+  [/Thirtieth/i, '30th'],
+  [/Thirty-?First/i, '31st'],
+  [/Thirty-?Second/i, '32nd'],
+  [/Thirty-?Third/i, '33rd'],
+  [/Thirty-?Fourth/i, '34th'],
+  [/Thirty-?Fifth/i, '35th'],
+  [/Thirty-?Sixth/i, '36th'],
+  [/Thirty-?Seventh/i, '37th'],
+  [/Thirty-?Eighth/i, '38th'],
+  [/Thirty-?Ninth/i, '39th'],
+  [/Fourtieth/i, '40th'],
+  [/Fourty-?First/i, '41st'],
+  [/Fourty-?Second/i, '42nd'],
+  [/Fourty-?Third/i, '43rd'],
+  [/Fourty-?Fourth/i, '44th'],
+  [/Fourty-?Fifth/i, '45th'],
+  [/Fourty-?Sixth/i, '46th'],
+  [/Fourty-?Seventh/i, '47th'],
+  [/Fourty-?Eighth/i, '48th'],
+  [/Fourty-?Ninth/i, '49th'],
+  [/Fiftieth/i, '50th'],
+  [/Fifty-?First/i, '51st'],
+  [/Fifty-?Second/i, '52nd'],
+  [/Fifty-?Third/i, '53rd'],
+  [/Fifty-?Fourth/i, '54th'],
+  [/Fifty-?Fifth/i, '55th'],
+  [/Fifty-?Sixth/i, '56th'],
+  [/Fifty-?Seventh/i, '57th'],
+  [/Fifty-?Eighth/i, '58th'],
+  [/Fifty-?Ninth/i, '59th']
+]
+
 const avenues = [
   'First',
   'Second',
@@ -17,60 +79,35 @@ const avenues = [
   'Fourteenth'
 ]
 
-function avenue (s) {
-  const lowerCaseAvenues = avenues.map((str) => str.toLowerCase())
-
-  if (R.contains(s, lowerCaseAvenues)) {
-    return `${s} Avenue`
-  }
-
-  // Check for strings like 'Avenue 8'
-  const aveN = s.match(/Avenue (\d+)/i)
-  if (aveN) {
-    const ave = parseInt(aveN[1])
-    return `${avenues[ave - 1]} Avenue`
-  }
-
-  return s
-}
-
 const notStreets = [
-  'Avenue',
-  'Street',
   'Alley',
+  'Avenue',
   'Broadway',
+  'Boulevard',
   'Bowery',
+  'Court',
+  'Exchange',
+  'Lane',
   'Market',
   'Place',
-  'Court',
-  'Square',
-  'Lane',
-  'Exchange',
+  'Road',
+  'Row',
   'Slip',
+  'Street',
+  'Square',
   'Terrace',
-  'Exchange',
-  'Row'
+  'Wharf'
 ]
-
-function street (s) {
-  if (!s.length) {
-    return s
-  }
-
-  if (R.any(R.contains(R.__, s.toLowerCase()), notStreets.map((str) => str.toLowerCase()))) {
-    return s
-  }
-
-  return `${s} Street`
-}
 
 const fixes = [
   [/^Ave?\.? /i, 'Avenue '],
   [/ Ave?\.?$/i, ' Avenue'],
+  [/ Blvd?\.?$/i, ' Boulevard'],
   [/ Ct\.?$/i, ' Court'],
   [/ Ex\.?$/i, ' Exchange'],
   [/ La\.?$/i, ' Lane'],
   [/ Mkt\.?$/i, ' Market'],
+  [/ Rd\.?$/i, ' Road'],
   [/ Pl\.?$/i, ' Place'],
   [/ Sl\.?$/i, ' Slip'],
   [/ St\.?$/i, ' Street'],
@@ -126,34 +163,90 @@ const fixes = [
   [/Washingt'n/i, 'Washington'],
   [/Wav'ley/i, 'Waverly'],
   [/Will'm/i, 'William'],
+  [/De Kalb/i, 'DeKalb'],
 
-  // Scottish names,  camel cased:
-  [/Macdougal/i, 'MacDougal']
+  // Camel cased names:
+  [/Macdougal/i, 'MacDougal'],
+  [/Dekalb/i, 'DeKalb']
 ]
 
-function fix (s) {
-  fixes.forEach((f) => {
-    s = s.replace(f[0], f[1])
-  })
-  return s
+function avenue (str) {
+  const lowerCaseAvenues = avenues.map((ave) => ave.toLowerCase())
+
+  if (R.contains(str, lowerCaseAvenues)) {
+    return `${str} Avenue`
+  }
+
+  // Check for strings like 'Avenue 8', convert to 'Eighth Avenue'
+  const aveN = str.match(/Avenue (\d+)/i)
+  if (aveN) {
+    const ave = parseInt(aveN[1])
+    if (avenues[ave - 1]) {
+      return `${avenues[ave - 1]} Avenue`
+    }
+  }
+
+  // Check for strings like '1st Avenue', convert to 'First Avenue'
+  const nAve = str.match(/(\d+)\w{0,2} Avenue/i)
+  if (nAve) {
+    const ave = parseInt(nAve[1])
+    if (avenues[ave - 1]) {
+      return `${avenues[ave - 1]} Avenue`
+    }
+  }
+
+  return str
 }
 
-function capitalize (s) {
-  return s.split(' ')
-    .map((word) => word.replace(/^\w/, (l) => l.toUpperCase()))
+function street (str) {
+  if (R.any(R.contains(R.__, str.toLowerCase()), notStreets.map((str) => str.toLowerCase()))) {
+    return str
+  }
+
+  return `${str} Street`
+}
+
+function ordinals (str) {
+  // Keep text ordinals for Avenues
+  if (str.endsWith('Avenue')) {
+    return str
+  }
+
+  // But convert to numbers for other street/roads, etc
+  //   reverse list to start with highest numbers
+  return R.reverse(fullOrdinals).reduce((str, num) => str.replace(num[0], num[1]), str)
+}
+
+function check (str) {
+  if (!str.length) {
+    throw new Error('String is empty')
+  }
+
+  return str
+}
+
+function fix (str) {
+  return fixes.reduce((str, fix) => str.replace(fix[0], fix[1]), str)
+}
+
+function capitalize (str) {
+  return str.split(' ')
+    .map((word) => word.replace(/^\w/, (firstChar) => firstChar.toUpperCase()))
     .join(' ')
 }
 
 const functions = [
   R.toLower,
   R.trim,
+  check,
   fix,
   avenue,
   street,
+  ordinals,
   capitalize
 ]
 
-const normalize = R.reduce((v, f) => f(v), R.__, functions)
+const normalize = R.reduce((str, func) => func(str), R.__, functions)
 module.exports = normalize
 
 if (require.main === module) {

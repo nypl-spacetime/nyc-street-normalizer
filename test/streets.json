@@ -20,7 +20,16 @@
   ["Av 8", "Eighth Avenue"],
   ["ave 8", "Eighth Avenue"],
   ["avenue 8", "Eighth Avenue"],
+  ["8th Av", "Eighth Avenue"],
   ["E. 35th", "East 35th Street"],
   ["Macdougal", "MacDougal Street"],
-  ["Hicks Street", "Hicks Street"]
+  ["Hicks Street", "Hicks Street"],
+  ["13th avenue", "Thirteenth Avenue"],
+  ["Shore Rd", "Shore Road"],
+  ["Vernon Blvd", "Vernon Boulevard"],
+  ["e. second", "East 2nd Street"],
+  ["East Nineteenth Street", "East 19th Street"],
+  ["E. Twenty-Second St", "East 22nd Street"],
+  ["E. Thirtyfirst", "East 31st Street"],
+  ["W. fourty-third St", "West 43rd Street"]
 ]
