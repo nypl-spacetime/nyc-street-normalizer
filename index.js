@@ -48,7 +48,8 @@ const notStreets = [
   'Exchange',
   'Slip',
   'Terrace',
-  'Exchange'
+  'Exchange',
+  'Row'
 ]
 
 function street (s) {
