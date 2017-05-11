@@ -1,9 +1,11 @@
 [
+  ["  Morris  ", "Morris Street"],
   ["Morris", "Morris Street"],
   ["Sullivan", "Sullivan Street"],
   ["W. 25th", "West 25th Street"],
   ["Monroe", "Monroe Street"],
   ["Fourth", "Fourth Avenue"],
+  ["Fourth Avenue", "Fourth Avenue"],
   ["B'way", "Broadway"],
   ["Broadway", "Broadway"],
   ["Rivington", "Rivington Street"],
@@ -31,5 +33,9 @@
   ["East Nineteenth Street", "East 19th Street"],
   ["E. Twenty-Second St", "East 22nd Street"],
   ["E. Thirtyfirst", "East 31st Street"],
-  ["W. fourty-third St", "West 43rd Street"]
+  ["W. fourty-third St", "West 43rd Street"],
+  ["Fourteenth", "Fourteenth Avenue"],
+  ["Fourteenth Street", "14th Street"],
+  ["Fifteenth", "15th Street"],
+  ["Fifteenth Street", "15th Street"]
 ]

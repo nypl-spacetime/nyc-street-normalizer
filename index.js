@@ -8,11 +8,11 @@ const fullOrdinals = [
   [/Fifth/i, '5th'],
   [/Sixth/i, '6th'],
   [/Seventh/i, '7th'],
-  [/Eigth/i, '8th'],
+  [/Eighth/i, '8th'],
   [/Ninth/i, '9th'],
   [/Tenth/i, '10th'],
   [/Eleventh/i, '11th'],
-  [/Twelth/i, '12th'],
+  [/Twelfth/i, '12th'],
   [/Thirteenth/i, '13th'],
   [/Fourteenth/i, '14th'],
   [/Fifteenth/i, '15th'],
@@ -208,7 +208,7 @@ function street (str) {
 
 function ordinals (str) {
   // Keep text ordinals for Avenues
-  if (str.endsWith('Avenue')) {
+  if (str.toLowerCase().endsWith('avenue')) {
     return str
   }
 
