@@ -1,0 +1,22 @@
+{
+  "name": "@spacetime/nyc-street-normalizer",
+  "version": "0.0.1",
+  "description": "Normalizes New York City street and avenue names and abbreviations",
+  "main": "index.js",
+  "bin": {
+    "nyc-street-normalizer": "index.js"
+  },
+  "scripts": {
+    "test": "npm run lint && tap test/*.js",
+    "lint": "standard index.js test/index.js"
+  },
+  "author": "Bert Spaan",
+  "license": "MIT",
+  "dependencies": {
+    "ramda": "^0.23.0"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2",
+    "tap": "^10.3.2"
+  }
+}
