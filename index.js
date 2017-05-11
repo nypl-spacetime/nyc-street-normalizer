@@ -79,7 +79,7 @@ const avenues = [
   'Fourteenth'
 ]
 
-const notStreets = [
+const streetTypes = [
   'Alley',
   'Avenue',
   'Broadway',
@@ -203,10 +203,10 @@ function avenue (str) {
 }
 
 function street (str) {
-  const notStreet = notStreets
-    .reduce((any, notStreet) => any || str.match(new RegExp(`\\b${notStreet}\\b`, 'i')), false)
+  const containsStreetType = streetTypes
+    .reduce((any, type) => any || str.match(new RegExp(`\\b${type}\\b`, 'i')), false)
 
-  if (notStreet) {
+  if (containsStreetType) {
     return str
   }
 
