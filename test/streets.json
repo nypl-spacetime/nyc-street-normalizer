@@ -5,6 +5,7 @@
   ["W. 25th", "West 25th Street"],
   ["Monroe", "Monroe Street"],
   ["Fourth", "Fourth Avenue"],
+  ["4 Avenue", "Fourth Avenue"],
   ["Fourth Avenue", "Fourth Avenue"],
   ["Broad", "Broad Street"],
   ["B'way", "Broadway"],
@@ -47,5 +48,8 @@
   ["W. 126", "West 126th Street"],
   ["W. 52d Street", "West 52nd Street"],
   ["W 41", "West 41st Street"],
-  ["42", "42nd Street"]
+  ["42", "42nd Street"],
+  ["42 Street", "42nd Street"],
+  ["43 Street", "43rd Street"],
+  ["11 Street", "11th Street"]
 ]
