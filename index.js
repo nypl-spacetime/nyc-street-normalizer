@@ -62,6 +62,23 @@ const fullOrdinals = [
   [/Fifty-?Ninth/i, '59th']
 ]
 
+const ordinalIndicator = (number) => {
+  if (number < 10 || number > 20) {
+    const lastDigit = number % 10
+
+    const indicators = {
+      '1': 'st',
+      '2': 'nd',
+      '3': 'rd'
+    }
+
+    if (indicators[lastDigit]) {
+      return indicators[lastDigit]
+    }
+  }
+  return 'th'
+}
+
 const avenues = [
   'First',
   'Second',
@@ -115,10 +132,10 @@ const fixes = [
   [/ Ter\.?$/i, ' Terrace'],
 
   // North, east, south, west:
-  [/^E\.? /i, 'East '],
-  [/^W\.? /i, 'West '],
-  [/^N\.? /i, 'North '],
-  [/^S\.? /i, 'South '],
+  [/\bE\.? /i, 'East '],
+  [/\bW\.? /i, 'West '],
+  [/\bN\.? /i, 'North '],
+  [/\bS\.? /i, 'South '],
 
   // Sometimes, a single d is used for ordinals:
   [/2d/, '2nd'],
@@ -202,6 +219,18 @@ function avenue (str) {
   return str
 }
 
+function numbers (str) {
+  const regex = /\b(\d+)\b/i
+  const onlyNumber = str.match(regex)
+
+  if (onlyNumber) {
+    const number = parseInt(onlyNumber[0])
+    return str.replace(regex, `${number}${ordinalIndicator(number)}`)
+  }
+
+  return str
+}
+
 function street (str) {
   const containsStreetType = streetTypes
     .reduce((any, type) => any || str.match(new RegExp(`\\b${type}\\b`, 'i')), false)
@@ -247,6 +276,7 @@ const functions = [
   R.trim,
   check,
   fix,
+  numbers,
   avenue,
   street,
   ordinals,
