@@ -1,6 +1,6 @@
 {
   "name": "@spacetime/nyc-street-normalizer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Normalizes New York City street and avenue names and abbreviations",
   "main": "index.js",
   "bin": {

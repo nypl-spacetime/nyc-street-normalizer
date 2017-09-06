@@ -132,10 +132,14 @@ const fixes = [
   [/ Ter\.?$/i, ' Terrace'],
 
   // North, east, south, west:
-  [/\bE\.? /i, 'East '],
-  [/\bW\.? /i, 'West '],
-  [/\bN\.? /i, 'North '],
-  [/\bS\.? /i, 'South '],
+  // [/\bE\.? /i, 'East '],
+  // [/\bW\.? /i, 'West '],
+  // [/\bN\.? /i, 'North '],
+  // [/\bS\.? /i, 'South '],
+  [/(^E\.? )|(?: (E\.? )) /i, 'East '],
+  [/(^W\.? )|(?: (W\.? )) /i, 'West '],
+  [/(^N\.? )|(?: (N\.? )) /i, 'North '],
+  [/(^S\.? )|(?: (S\.? )) /i, 'South '],
 
   // Sometimes, a single d is used for ordinals:
   [/2d/, '2nd'],
