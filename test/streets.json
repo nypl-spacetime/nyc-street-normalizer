@@ -52,5 +52,8 @@
   ["42 Street", "42nd Street"],
   ["43 Street", "43rd Street"],
   ["11 Street", "11th Street"],
-  ["jone's lane", "Jone's Lane"]
+  ["jone's lane", "Jone's Lane"],
+  ["E.12th", "East 12th Street"],
+  ["W . 12th", "West 12th Street"],
+  [" e . 42nd", "East 42nd Street"]
 ]

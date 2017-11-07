@@ -138,10 +138,15 @@ const fixes = [
   // [/\bW\.? /i, 'West '],
   // [/\bN\.? /i, 'North '],
   // [/\bS\.? /i, 'South '],
-  [/(^E\.? )|(?: (E\.? )) /i, 'East '],
-  [/(^W\.? )|(?: (W\.? )) /i, 'West '],
-  [/(^N\.? )|(?: (N\.? )) /i, 'North '],
-  [/(^S\.? )|(?: (S\.? )) /i, 'South '],
+  [/E\.\s?/i, 'East '],
+  [/W\.\s?/i, 'West '],
+  [/N\.\s?/i, 'North '],
+  [/S\.\s?/i, 'South '],
+
+  [/(^E\s?\.? )|(?: (E\s?\.? )) /i, 'East '],
+  [/(^W\s?\.? )|(?: (W\s?\.? )) /i, 'West '],
+  [/(^N\s?\.? )|(?: (N\s?\.? )) /i, 'North '],
+  [/(^S\s?\.? )|(?: (S\s?\.? )) /i, 'South '],
 
   // Sometimes, a single d is used for ordinals:
   [/2d/, '2nd'],
